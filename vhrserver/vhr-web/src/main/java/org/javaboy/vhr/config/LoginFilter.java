@@ -30,6 +30,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     SessionRegistry sessionRegistry;
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        // 请求不是post直接不放行
         if (!request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException(
                     "Authentication method not supported: " + request.getMethod());
@@ -42,6 +43,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             } catch (IOException e) {
             }finally {
                 String code = loginData.get("code");
+                // 校验验证码
                 checkCode(response, code, verify_code);
             }
             String username = loginData.get(getUsernameParameter());

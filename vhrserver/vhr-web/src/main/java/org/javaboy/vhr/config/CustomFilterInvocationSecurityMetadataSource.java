@@ -44,6 +44,7 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
                 return SecurityConfig.createList(str);
             }
         }
+        // 不在配置里面的路由，默认返回ROLE_LOGIN角色
         return SecurityConfig.createList("ROLE_LOGIN");
     }
 
