@@ -114,6 +114,7 @@ public class VerificationCode {
 		return text;
 	}
 
+	// 将BufferedImage对象转换成JPEF格式图像将其输出到指定的输出流，从而实现了将图像数据输出到外部设备，out会是请求的响应结果输出流
 	public static void output(BufferedImage image, OutputStream out) throws IOException {
 		ImageIO.write(image, "JPEG", out);
 	}
