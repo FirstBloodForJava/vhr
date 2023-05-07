@@ -24,6 +24,9 @@ public class MailSendTask {
     EmployeeService employeeService;
     @Scheduled(cron = "0/10 * * * * ?")
     public void mailResendTask() {
+
+        // 获取需要发送的消息邮件，邮件消息有三种状态0 发送中,1 发送成功,2发送失败
+        // 消息逻辑判断: 只要没有被设置为1都算没有发送的消息,消息发送到消息队列之前都改发送次数，超过三次的就算发送失败
         List<MailSendLog> logs = mailSendLogService.getMailSendLogsByStatus();
         if (logs == null || logs.size() == 0) {
             return;
