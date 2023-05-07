@@ -23,6 +23,7 @@ public class FastDFSUtils {
 
     static {
         try {
+            // 类加载方式读取配置文件信息
             ClientGlobal.initByProperties("fastdfs-client.properties");
             TrackerClient trackerClient = new TrackerClient();
             TrackerServer trackerServer = trackerClient.getConnection();
